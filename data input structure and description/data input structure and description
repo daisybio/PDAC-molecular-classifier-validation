@@ -1,0 +1,32 @@
+Data needed:
+- Gene expression matrix for every data, samples on the rows and genes on the columns
+- survival information, when available
+- subtype labels assigned by the study, when available
+- list of genes in the three signatures to evaluate
+
+############################################ #
+# Data structures to input in the functions: #
+##############################################
+signature_dict = dictionary with list of genes of the signatures and subtypes,
+                 e.g. {"Signature X": (list_genes_signature_X, subtypes_related_to_signature_X),...}
+data_dict      = dictionary containing all the dataframes of the datasets we want to make predictions on 
+                  (e.g.: {"data X":data_X_df, "data Y":data_y_df, ...})
+df_with_subtypes = dictionary of the dataset whose subtype information is available, where keys are the data name and 
+                   values are tuples (df, subtypes), e.g.: {"data X": (discovery_dataset_used_for_signature_X, subtypes_related_to_signature_X),...}   
+train_data_dict = dictionary containing the information needed for training the model, in the format:
+                  {"signature X":(discovery_dataset_used_for_signature_X, list_genes_in_signature_X, subtypes_related_to_signature_X),...}
+
+surv = dictionary with names of data with survival info as keys and survival data as values (df with time and event column)
+       (e.g. {"data X":df_X([time, event], ...)}
+data = dictionary with names of data with survival info as keys and samples name as values
+       (e.g. {"data X": list_sample_names_of_data_X, ...}
+
+####################################### #
+# Labels predicted with classification: #
+#########################################
+pred = sictionary with predictions: {"classification_train_model_1":{"test_data_1":predicted_labels, "test_data_2":predicted_labels,...}, ...}
+
+where, given three signatures X,Y,Z, the models are nine:
+models = ["X data - X signatures", "X data - Y signatures", "X data - Z signatures",
+          "Y data - X signatures", "Y data - Y signatures", "Y data - Z signatures",
+          "Z data - X signatures", "Z data - Y signatures", "Z data - Z signatures"]
