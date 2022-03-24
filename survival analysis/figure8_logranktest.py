@@ -92,7 +92,6 @@ surv_pval_coll = pd.DataFrame(surv_pval_coll, index = pair_test_coll)
 surv_pval_coll.index = [i.replace(" PDA","").replace("-PDA","") for i in surv_pval_coll.index]
 surv_pval_bail = pd.DataFrame(surv_pval_bail, index = pair_test_bail)
 surv_pval_bail.index = [i.replace("Pancreatic Progenitor","PP") for i in surv_pval_bail.index]
-import numpy as np
 import matplotlib.lines as mlines
 
 # heatmap 1
